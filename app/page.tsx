@@ -1,75 +1,82 @@
 import Link from "next/link";
-import { Terminal, Server, Cpu, ArrowRight, FolderGit2, Activity } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+
 export default function HomePage() {
   return (
-    <div className="space-y-14">
-      {/* Hero 自我介紹區 */}
-      <section className="space-y-5 pt-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-emerald-400">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          Open to Backend / Cloud / IT Engineering Roles
+    <div className="space-y-16">
+      {/* 個人簡介：純粹的文字層級與留白 */}
+      <section className="space-y-6">
+        <div className="space-y-2">
+          <p className="font-mono text-xs text-zinc-500 tracking-wide">
+            NCU MIS · SYSTEMS & CLOUD ENGINEERING
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-100">
+            江源輝 <span className="text-zinc-500 font-normal">Yuan-Hui Chiang</span>
+          </h1>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-100">
-          江源輝 <span className="text-zinc-500 font-normal text-2xl sm:text-3xl">Yuan-Hui Chiang</span>
-        </h1>
-
-        <p className="text-lg text-zinc-400 leading-relaxed max-w-2xl">
-          國立中央大學資訊管理研究所（系統組）。專注於<strong className="text-zinc-200 font-medium">高併發後端架構</strong>、<strong className="text-zinc-200 font-medium">雲端自動化維運（DevOps）</strong>與<strong className="text-zinc-200 font-medium">邊緣端軟硬體系統整合</strong>。
+        <p className="text-[15px] text-zinc-400 leading-7 max-w-2xl">
+          國立中央大學資訊管理研究所（系統組）。專注於後端服務開發、容器化與雲端基礎設施自動化（IaC），以及低功耗邊緣端軟硬體整合。
         </p>
 
-        {/* 行動按鈕 */}
-        <div className="flex flex-wrap items-center gap-4 pt-2">
+        {/* 文字型連結，去掉亮綠色大按鈕 */}
+        <div className="flex items-center gap-6 text-sm font-medium pt-1">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-500 text-zinc-950 font-semibold text-sm hover:bg-emerald-400 transition"
+            className="inline-flex items-center gap-1 text-zinc-100 underline underline-offset-4 decoration-zinc-600 hover:decoration-zinc-100 transition-colors"
           >
-            瀏覽系統專案 <ArrowRight className="w-4 h-4" />
+            Selected Projects <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
           </Link>
           <a
             href="https://github.com/johnjohn1207"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium text-sm hover:border-zinc-700 hover:text-white transition"
+            className="inline-flex items-center gap-1 text-zinc-400 hover:text-zinc-100 transition-colors"
           >
-            <FolderGit2 className="w-4 h-4" /> GitHub             </a>
+            GitHub <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
+          </a>
         </div>
       </section>
 
-      {/* 雲端即時監控看板（階段 2 將串接 GCP Cloud Run + Firestore） */}
-      <section className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs">
-        <div className="flex items-center gap-3">
-          <Activity className="w-4 h-4 text-emerald-500 shrink-0" />
-          <div>
-            <span className="text-zinc-400">CLOUD ARCHITECTURE STATUS: </span>
-            <span className="text-emerald-400 font-semibold">ALL SYSTEMS OPERATIONAL</span>
-          </div>
+      {/* 系統架構即時狀態列：低調的終端機規格行，預留階段 2 API 串接 */}
+      <section className="border-y border-zinc-800/70 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-xs">
+        <div className="flex items-center gap-2.5 text-zinc-400">
+          <span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
+          <span>edge: cloudflare-pages</span>
+          <span className="text-zinc-700">/</span>
+          <span>api: gcp-cloud-run</span>
         </div>
         <div className="text-zinc-400">
-          VISITOR COUNTER: <span className="text-zinc-200 font-bold px-2 py-0.5 bg-zinc-800 rounded">[Pending Phase 2 API]</span>
+          requests_total: <span className="text-zinc-100">pending_phase_2</span>
         </div>
       </section>
 
-      {/* 核心技術棧 */}
-      <section className="space-y-4">
-        <h2 className="text-sm font-mono uppercase tracking-wider text-zinc-500">Core Tech Stack</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/80 space-y-2">
-            <Server className="w-5 h-5 text-emerald-400" />
-            <h3 className="font-semibold text-zinc-200">Backend & Database</h3>
-            <p className="text-sm text-zinc-400">Python (FastAPI), C++, Java, SQL, PostgreSQL, Redis, Kafka</p>
+      {/* 技術棧：改用極簡雙欄清單，完全拿掉圓角外框與圖示 */}
+      <section className="space-y-6">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-zinc-500">
+          Technical Stack
+        </h2>
+
+        <dl className="divide-y divide-zinc-800/70 border-t border-b border-zinc-800/70 text-sm">
+          <div className="py-3.5 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
+            <dt className="font-mono text-xs text-zinc-400 pt-0.5">Backend & Data</dt>
+            <dd className="sm:col-span-2 text-zinc-200">
+              Python (FastAPI), C++, Java, PostgreSQL, Firestore, Redis
+            </dd>
           </div>
-          <div className="p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/80 space-y-2">
-            <Terminal className="w-5 h-5 text-emerald-400" />
-            <h3 className="font-semibold text-zinc-200">Cloud & DevOps</h3>
-            <p className="text-sm text-zinc-400">GCP (Cloud Run, Firestore), Docker, Kubernetes (k3s), Terraform, GitHub Actions</p>
+          <div className="py-3.5 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
+            <dt className="font-mono text-xs text-zinc-400 pt-0.5">Cloud & Infra</dt>
+            <dd className="sm:col-span-2 text-zinc-200">
+              GCP (Cloud Run, IAM, Artifact Registry), Docker, Terraform, GitHub Actions, Linux
+            </dd>
           </div>
-          <div className="p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/80 space-y-2">
-            <Cpu className="w-5 h-5 text-emerald-400" />
-            <h3 className="font-semibold text-zinc-200">Systems & Embedded</h3>
-            <p className="text-sm text-zinc-400">Linux (Ubuntu), ESP32, BLE RSSI Localization, PN532 NFC/RFID</p>
+          <div className="py-3.5 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
+            <dt className="font-mono text-xs text-zinc-400 pt-0.5">Embedded & IoT</dt>
+            <dd className="sm:col-span-2 text-zinc-200">
+              ESP32, BLE RSSI Indoor Localization, PN532 NFC/RFID
+            </dd>
           </div>
-        </div>
+        </dl>
       </section>
     </div>
   );
